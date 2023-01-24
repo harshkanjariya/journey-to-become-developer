@@ -1,0 +1,29 @@
+.vars-n-data-types {
+}
+
+.block-sequence {
+    display: flex;
+    justify-content: space-around;
+    width: 650px;
+    height: 200px;
+}
+
+.code-parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.variable-preview {
+    background: white;
+    display: inline-block;
+    padding: 20px 30px;
+}
+.variable-binary {
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 3px;
+    border: 1px solid black;
+    letter-spacing: 2px;
+}
+
