@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
+import Link from "next/link";
+import {links} from "@/utils/constants";
 
 export default function Home() {
   return (
@@ -11,9 +13,16 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
+        Procedure Oriented Programming
         <ul>
-          <li><a href="/procedure-oriented-programming/variables-and-data-types">Variables & Data Types</a></li>
-          <li><a href="/procedure-oriented-programming/functions">Function</a></li>
+          <li>
+            <Link href={links.pops.vars.int}>Variables & Data Types</Link>
+            <ul>
+              <li><Link href={links.pops.vars.int}>int</Link></li>
+              <li><Link href={links.pops.vars.float}>float</Link></li>
+            </ul>
+          </li>
+          <li><Link href={links.pops.funs.baseUrl}>Function</Link></li>
         </ul>
       </main>
     </>

@@ -106,6 +106,7 @@ a {
 
 .container {
   max-width: 1200px;
+  margin-top: 40px;
 }
 
 .code {
@@ -117,11 +118,17 @@ a {
   line-height: 25px;
   letter-spacing: 1px;
   border-radius: 5px;
+  min-width: 200px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
 }
 
 .variable-input{
   display: inline-block;
-  min-width: 30px!important;
+  min-width: 30px;
   border: 1px solid gray;
   padding: 3px 5px;
   border-radius: 5px;
@@ -138,6 +145,10 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+ul {
+  margin-left: 20px;
 }
 
 /* Firefox */

@@ -1,7 +1,13 @@
-.vars-n-data-types {
+.description{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.description li {
+    margin-bottom: 5px;
 }
 
 .block-sequence {
+    margin-top: 50px;
     display: flex;
     justify-content: space-around;
     width: 650px;
@@ -14,6 +20,22 @@
     justify-content: space-between;
 }
 
+.code-modifier-parent {
+    display: flex;
+    flex-direction: row;
+}
+
+.code-modifier {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.code-modifier input {
+    margin-top: 13px;
+}
+
 .variable-preview {
     background: white;
     display: inline-block;
@@ -21,9 +43,11 @@
 }
 .variable-binary {
     display: inline-block;
+    width: 20.5ch;
     padding: 2px 5px;
     border-radius: 3px;
     border: 1px solid black;
     letter-spacing: 2px;
+    font-family: "Courier New", Courier, monospace;
 }
 

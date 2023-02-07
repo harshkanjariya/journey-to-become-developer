@@ -1,13 +1,26 @@
-import styles from '@/styles/VarsNDataTypes.module.css';
+import styles from '@/styles/variables-and-data-types/index.module.css';
+import * as floatStyles from '@/styles/variables-and-data-types/float.module.css';
 import {useState} from "react";
-import {toBinaryString} from "@/utils/functions";
+import {encodeFloat, floatToBinaryString} from "@/utils/functions";
 
-export default function VariablesAndDataTypes() {
+export default function Float() {
   const [xVal, setXVal] = useState<number>(5);
   const [yVal, setYVal] = useState<number>(37);
 
+  const onChange = (e: any, set: Function) => {
+    let value = e.target.value;
+    if (/^\d+\.?\d*(e-?\d*)?$/.test(value)) {
+      set(value);
+    }
+  }
+
   return <>
-    <div className={"container " + styles['vars-n-data-types']}>
+    <div className="container">
+      <h2>float</h2>
+      <ul className={styles['description']}>
+        <li><b>float</b> data type is used to store floating point values and generally consumes 4 bytes in memory.</li>
+        <li>float value range is -3.4e38 to 3.4e38.</li>
+      </ul>
       <svg className={styles['block-sequence']}>
         <text x="55" y="20">RAM</text>
         <rect x="1" y="30" width="150" height="120" fill="transparent" stroke="black" strokeWidth="2"/>
@@ -31,35 +44,38 @@ export default function VariablesAndDataTypes() {
         <line x1="615" y1="105" x2="650" y2="200" stroke="black" strokeWidth="1" strokeDasharray="5,5"/>
       </svg>
       <div className={styles['code-parent']}>
-        <div className="code">
-          int main() {'{'}<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;int x =&nbsp;
-          <input
-              onChange={(e) => setXVal(parseInt(e.target.value))}
-              className="variable-input"
-              type="number"
-              defaultValue={xVal}
-          />;<br/>
-          &nbsp;&nbsp;&nbsp;&nbsp;int y =&nbsp;
-          <input
-              size="1"
-              onChange={(e) => setYVal(parseInt(e.target.value))}
-              className="variable-input"
-              type="number"
-              defaultValue={yVal}
-          />;<br/>
-          {'}'}
+        <div className={styles['code-modifier-parent']}>
+          <div className="code">
+            int main() {'{'}<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;float x =&nbsp;
+            <input
+                style={{width: xVal.toString().length * 10 + 10}}
+                onChange={(e) => onChange(e, setXVal)}
+                className="variable-input"
+                type="text"
+                value={xVal}
+            />;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;float y =&nbsp;
+            <input
+                style={{width: yVal.toString().length * 10 + 10}}
+                onChange={(e) => onChange(e, setYVal)}
+                className="variable-input"
+                type="text"
+                value={yVal}
+            />;<br/>
+            {'}'}
+          </div>
         </div>
         <div className={styles['variable-preview']}>
           x&nbsp;
-          <div className={styles['variable-binary']}>
-            {toBinaryString(xVal, 16)}
+          <div className={styles['variable-binary'] + ' ' + floatStyles['binary']}>
+            {encodeFloat(xVal)}
           </div>
           <br/>
           <br/>
           y&nbsp;
-          <div className={styles['variable-binary']}>
-            {toBinaryString(yVal, 16)}
+          <div className={styles['variable-binary'] + ' ' + floatStyles['binary']}>
+            {encodeFloat(yVal)}
           </div>
         </div>
       </div>

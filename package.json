@@ -2,9 +2,11 @@
   "name": "journey-to-become-developer",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://harshkanjariya.github.io/journey-to-become-developer",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "predeploy": "ENVIRONMENT=production next build && next export && touch out/.nojekyll",
+    "deploy": "gh-pages -d out -t true",
     "start": "next start",
     "lint": "next lint"
   },
