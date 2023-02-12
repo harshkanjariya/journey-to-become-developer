@@ -12,7 +12,7 @@ let links = {
   }
 };
 
-function fillBaseUrl(obj, baseUrl = '') {
+function fillBaseUrl(obj: any, baseUrl = '') {
   if (typeof obj === 'string') {
     return;
   }

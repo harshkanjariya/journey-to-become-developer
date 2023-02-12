@@ -17,7 +17,7 @@ export function toBinaryString(num: number, bits = 8) {
   return binary;
 }
 
-export function floatToBinaryString(num: string) {
+export function floatToBinaryString(num: any) {
   if (num === '0') return '0'.repeat(32);
   num = num.trim().toLowerCase();
 
@@ -40,20 +40,20 @@ export function floatToBinaryString(num: string) {
   let exponent = '';
 
   if (num.indexOf('e') > 0) {
-    exponent = toBinaryString(eVal + 127);
+    exponent = toBinaryString(exponentValue + 127);
   } else {
     exponent = '01111111';
   }
   return sign + exponent + mantissa;
 }
 
-export function encodeFloat(number) {
+export function encodeFloat(number: number) {
   var n = +number,
       status = (n !== n) || n == -Infinity || n == +Infinity ? n : 0,
       exp = 0,
       len = 281, // 2 * 127 + 1 + 23 + 3,
       bin = new Array(len),
-      signal = (n = status !== 0 ? 0 : n) < 0,
+      signal = (n = status !== 0 ? 0 : n) < 0 ? 1 : 0,
       n = Math.abs(n),
       intPart = Math.floor(n),
       floatPart = n - intPart,
@@ -84,7 +84,8 @@ export function encodeFloat(number) {
 
   i = 128;
   while (floatPart > 0 && i) {
-    (bin[++i] = ((floatPart *= 2) >= 1) - 0) && --floatPart;
+    floatPart *= 2;
+    (bin[++i] = (floatPart >= 1 ? 1 : 0) - 0) && --floatPart;
   }
 
   i = -1;
@@ -100,7 +101,7 @@ export function encodeFloat(number) {
 
     j = lastBit + 1;
     while (rounded && --j >= 0) {
-      (bin[j] = !bin[j] - 0) && (rounded = 0);
+      (bin[j] = (bin[j] ? 0 : 1) - 0) && (rounded = 0);
     }
   }
   i = i - 2 < 0 ? -1 : i - 3;

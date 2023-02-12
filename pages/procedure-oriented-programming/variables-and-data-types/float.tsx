@@ -1,5 +1,5 @@
 import styles from '@/styles/variables-and-data-types/index.module.css';
-import * as floatStyles from '@/styles/variables-and-data-types/float.module.css';
+import floatStyles from '@/styles/variables-and-data-types/float.module.css';
 import {useState} from "react";
 import {encodeFloat, floatToBinaryString} from "@/utils/functions";
 
